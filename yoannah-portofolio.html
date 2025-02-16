@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoannah Rajoelson - Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a8a6ff;
+            --accent-color: #00cec9;
+            --text-color: #2d3436;
+            --bg-color: #f8f9fa;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: 
+                radial-gradient(circle at 10% 20%, var(--secondary-color) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, var(--accent-color) 0%, transparent 20%),
+                var(--bg-color);
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: scale(1.02);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item, .project-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover, .project-card a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--card-bg);
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .language-level {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .language-level:hover {
+            transform: scale(1.02);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 4px solid white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            object-fit: cover; 
+        }
+
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            header {
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="me.jpg" alt="Profile" class="profile-image" />
+        <h1>Yoannah Rajoelson</h1>
+        <p>Développeuse Web et Mobile</p>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>À Propos</h2>
+            <p>Passionnée par les technologies, autonome et rigoureuse, je suis convaincue que mes compétences techniques et mon esprit d'équipe me permettront d'apporter une réelle valeur ajoutée au sein de votre structure.</p>
+            
+            <div class="contact-info">
+                <a href="mailto:yoannahrj@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>yoannahrj@gmail.com</span>
+                </a>
+                <a href="tel:+261326322334" class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+261326322334</span>
+                </a>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Antananarivo, Madagascar</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Languages</h3>
+                    <ul>
+                        <li>Java</li>
+                        <li>C, C#</li>
+                        <li>Python</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>PHP</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
+                    <ul>
+                        <li>Spring Boot</li>
+                        <li>ASP.NET MVC</li>
+                        <li>React Native</li>
+                        <li>Node.js</li>
+                        <li>Vue.js</li>
+                        <li>Angular.js</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Base de données</h3>
+                    <ul>
+                        <li>MySQL</li>
+                        <li>PostgreSQL</li>
+                        <li>Oracle Database</li>
+                        <li>Microsoft SQL Server</li>
+                        <li>MongoDB</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Outils</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>GitHub</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Projets Académiques</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>IzyGo - Site de Réservation de Bus</h3>
+                    <p><strong>Technologies:</strong> Spring Boot, AngularJS</p>
+                    <p>Développement des fonctionnalités clés dans un projet d'équipe :</p>
+                    <ul style="list-style: none; margin-top: 0.5rem;">
+                        <li>• Système de réservation de places</li>
+                        <li>• Gestion des annulations</li>
+                        <li>• Génération de QR codes pour les tickets</li>
+                        <li>• Système de billetterie électronique</li>
+                    </ul>
+                    <a href="https://github.com/Kevin-rm/Izygo-project.git">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Application Mobile Cryptomonnaie</h3>
+                    <p><strong>Technologies:</strong> React Native, Firebase</p>
+                    <p>Application complète de trading de cryptomonnaies :</p>
+                    <ul style="list-style: none; margin-top: 0.5rem;">
+                        <li>• Suivi des cours en temps réel</li>
+                        <li>• Système de dépôt et retrait</li>
+                        <li>• Interface utilisateur intuitive</li>
+                        <li>• Gestion sécurisée des transactions</li>
+                    </ul>
+                    <a href="https://github.com/Yoannah05/Cryptomonnaie-mobile.git">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Site Vitrine Nerona</h3>
+                    <p><strong>Technologies:</strong> HTML, CSS, JavaScript (Vanilla)</p>
+                    <p>Site web institutionnel présentant :</p>
+                    <ul style="list-style: none; margin-top: 0.5rem;">
+                        <li>• Interface moderne et responsive</li>
+                        <li>• Présentation des services</li>
+                        <li>• Optimisation des performances</li>
+                    </ul>
+                    <a href="https://nerona.netlify.app/" target="_blank">
+                        <i class="fas fa-globe"></i> Voir le site
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Gestion d'Atelier de Réparation</h3>
+                    <p><strong>Technologies:</strong> Spring Boot, PostgreSQL</p>
+                    <p>Chef de projet pour une application de gestion d'atelier :</p>
+                    <ul style="list-style: none; margin-top: 0.5rem;">
+                        <li>• Gestion des réparations d'ordinateurs</li>
+                        <li>• Suivi des interventions</li>
+                        <li>• Interface administrative</li>
+                        <li>• Leadership d'équipe</li>
+                    </ul>
+                    <a href="https://github.com/Yoannah05/Reparation-Ordi.git">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <h2>Langues</h2>
+            <div class="language-level">
+                <span>Malgache</span>
+                <span>Langue maternelle</span>
+            </div>
+            <div class="language-level">
+                <span>Français</span>
+                <span>B2</span>
+            </div>
+            <div class="language-level">
+                <span>Anglais</span>
+                <span>B2</span>
+            </div>
+            <div class="language-level">
+                <span>Espagnol</span>
+                <span>A2</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Formation</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Licence en Informatique</h3>
+                    <p>IT University Madagascar</p>
+                    <p>2022 - Présent</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Baccalauréat Scientifique (Série C)</h3>
+                    <p>Stella Maris La Salle Toamasina</p>
+                    <p>2022</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Baccalauréat Scientifique (Série D)</h3>
+                    <p>God's Titan School Toamasina</p>
+                    <p>2021</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Centres d'intérêt</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-running"></i> Sports</h3>
+                    <p>Tennis, Vélo, Natation, Randonnée</p>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-book"></i> Lecture et Apprentissage</h3>
+                    <p>Science-fiction, technologie, gestion de projets, développement personnel</p>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-plane"></i> Voyages</h3>
+                    <p>Découverte de nouvelles cultures et de nouvelles langues</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body
